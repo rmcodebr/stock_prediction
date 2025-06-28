@@ -44,24 +44,21 @@ const Register = () => {
       <div className="">
         <div className="flex flex-row justify-center">
           <div className="flex flex-col bg-slate-800 m-4 rounded p-2">
-            <div className="flex flex-row justify-center mb-4">
-              Create an Account
-            </div>
+            <div className="flex justify-center mb-4">Create an Account</div>
             <form
               onSubmit={handleRegistration}
               className="p-4 space-y-2"
               action=""
             >
-              <div className="">
+              {/* Username */}
+              <div className="flex flex-col">
                 <input
                   className="p-1 bg-slate-100 text-black placeholder-gray-500 rounded"
                   type="text"
                   placeholder="Enter Username"
                   autoComplete="off"
                   value={username}
-                  onChange={(e) => {
-                    setUsername(e.target.value);
-                  }}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
                 {errors.username && (
                   <div className="text-red-600 bg-slate-500 mt-1 mb-2 rounded inline-block">
@@ -70,57 +67,75 @@ const Register = () => {
                 )}
               </div>
 
-              <input
-                className="p-1 bg-slate-100 text-black placeholder-gray-500 rounded"
-                type="email"
-                placeholder="Enter Email"
-                autoComplete="off"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-              {errors.email && (
-                <div className="text-red-600 bg-slate-500 mt-1 mb-2 rounded inline-block">
-                  <div className="mx-1">{errors.email}</div>
-                </div>
-              )}
-              <input
-                className="p-1 bg-slate-100 text-black placeholder-gray-500 rounded"
-                type="password"
-                placeholder="Enter Password"
-                autoComplete="off"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-              {errors.password && (
-                <div className="text-red-600 bg-slate-500 mt-1 mb-2 rounded inline-block">
-                  <div className="mx-1">{errors.password}</div>
-                </div>
-              )}
-              {success && (
-                <>
-                  <div className="text-blue-500 bg-slate-100 rounded inline-block">
-                    <div className="mx-1">User registered succesfully</div>
+              {/* Email */}
+              <div className="flex flex-col">
+                <input
+                  className="p-1 bg-slate-100 text-black placeholder-gray-500 rounded"
+                  type="email"
+                  placeholder="Enter Email"
+                  autoComplete="off"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                {errors.email && (
+                  <div className="text-red-600 bg-slate-500 mt-1 mb-2 rounded inline-block">
+                    <div className="mx-1">{errors.email}</div>
                   </div>
-                </>
-              )}
-              {loading ? (
-                <div className="flex justify-center items-center mt-2">
-                  <button className="bg-slate-500 px-4 rounded" type="submit">
-                    <FontAwesomeIcon icon={faSpinner} spin className="mx-2" />
-                    Please Wait
-                  </button>
+                )}
+              </div>
+
+              {/* Password */}
+              <div className="flex flex-col">
+                <input
+                  className="p-1 bg-slate-100 text-black placeholder-gray-500 rounded"
+                  type="password"
+                  placeholder="Enter Password"
+                  autoComplete="off"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                {errors.password && (
+                  <div className="text-red-600 bg-slate-500 mt-1 mb-2 rounded inline-block">
+                    <div className="mx-1">{errors.password}</div>
+                  </div>
+                )}
+              </div>
+
+              {/* Confirm Password */}
+              {/* <div className="flex flex-col">
+                <input
+                  className="p-1 bg-slate-100 text-black placeholder-gray-500 rounded"
+                  type="password"
+                  placeholder="Confirm Password"
+                  autoComplete="off"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </div> */}
+
+              {/* Success message */}
+              {success && (
+                <div className="text-blue-500 bg-slate-100 rounded inline-block">
+                  <div className="mx-1">User registered successfully</div>
                 </div>
-              ) : (
-                <div className="flex justify-center items-center mt-2">
-                  <button className="bg-slate-500 px-4 rounded" type="submit">
-                    Register
-                  </button>
-                </div>
               )}
+
+              {/* Submit button */}
+              <div className="flex justify-center items-center mt-2">
+                <button
+                  className="bg-slate-500 px-4 py-1 rounded"
+                  type="submit"
+                >
+                  {loading ? (
+                    <>
+                      <FontAwesomeIcon icon={faSpinner} spin className="mx-2" />
+                      Please Wait
+                    </>
+                  ) : (
+                    "Register"
+                  )}
+                </button>
+              </div>
             </form>
           </div>
         </div>
