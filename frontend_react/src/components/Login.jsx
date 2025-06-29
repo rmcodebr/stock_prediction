@@ -24,13 +24,12 @@ const Login = () => {
         userData
       );
       setErrors({});
-      localStorage.setItem("accessToken", response.data.access);
-      localStorage.setItem("refreshToken", response.data.refresh);
+      localStorage.setItem("access_token", response.data.access);
+      localStorage.setItem("refresh_token", response.data.refresh);
       setIsLoggedIn(true);
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       setErrors(error.response.data);
-      // console.log(error.response.data);
     } finally {
       setLoading(false);
     }

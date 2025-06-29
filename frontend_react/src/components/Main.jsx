@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   const [language, setLanguage] = useState("pt");
@@ -31,6 +32,15 @@ const Main = () => {
             </button>
           </div>
         </div>
+      </div>
+
+      <div className="flex justify-center">
+        <Link
+          className="bg-slate-700 p-2 rounded cursor-pointer"
+          to="/dashboard"
+        >
+          Explore Now
+        </Link>
       </div>
     </>
   );

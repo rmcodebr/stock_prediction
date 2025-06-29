@@ -4,13 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider";
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
     setIsLoggedIn(false);
     navigate("/");
   };
@@ -35,6 +34,11 @@ const Header = () => {
                 >
                   Logout
                 </button>
+                <Button
+                  text="Dashboard"
+                  class="bg-slate-500"
+                  url="/dashboard"
+                />
               </div>
             </>
           ) : (

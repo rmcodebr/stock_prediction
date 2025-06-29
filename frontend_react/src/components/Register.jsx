@@ -28,12 +28,10 @@ const Register = () => {
         "http://localhost:8000/api/v1/register/",
         userData
       );
-      console.log("response.data ==>", response.data);
       setErrors({});
       setSuccess(true);
     } catch (error) {
       setErrors(error.response.data);
-      console.log("Error message:", error.response.data);
     } finally {
       setLoading(false);
     }
